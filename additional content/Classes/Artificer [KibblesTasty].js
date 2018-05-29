@@ -9,13 +9,13 @@
 /*	-INFORMATION-
 	Subject:	Class
 	Effect:		This script adds a class called the "Artificer" and its 5 subclasses.
-	
-				This class has been made by /u/KibblesTasty on the subbreddit /UnearthedArcana 
+
+				This class has been made by /u/KibblesTasty on the subbreddit /UnearthedArcana
 				It can be found here: https://www.reddit.com/r/UnearthedArcana/comments/8l3578/5e_revised_artificer_v14_cannonsmith_thunder/
 				This code is based on v1.4 of /u/KibblesTasty's work (2018-05-21)
-				
+
 				This script was based upon MPMB's script for the Witch.
-					
+
 	Code by:	Apocalypsa
 	Date:		2018-05-26 (sheet v12.999)
 */
@@ -38,13 +38,13 @@ SourceList["HB"] = {
 
 	// 2nd level
 	"aid", "alter self", "arcane lock", "blur", "cloud of daggers", "darkvision", "earthbind", "enhance ability", "enlarge/reduce", "find traps", "heat metal", "hold person", "knock", "invisibility", "locate object", "magic weapon", "magic mouth", "protection from poison", "see invisibility", "spider climb",
-	
+
 	// 3rd level
 	"elemental weapon", "feign death", "flame arrows", "gaseous form", "glyph of warding", "life transference", "lightning arrow", "magic circle", "nondetection", "protection from energy", "sending", "tiny servant", "wall of sand", "water breathing", "water walk", "wind wall",
-	
+
 	// 4th level
 	"arcane eye", "death ward", "fabricate", "fire shield", "freedom of movement", "greater invisibility", "leomund's secret chest", "otiluke's resilient sphere", "stone shape", "stoneskin", "sickening radiance",
-	
+
 	// 5th level
 	"animate objects", "creation", "hold monster", "legend lore", "mislead", "passwall", "skill empowerment", "telekinesis", "teleportation circle", "transmute rock", "wall of stone"
 ].forEach( function (n) {
@@ -91,9 +91,9 @@ ClassList["artificer"] = {
 			description : desc([
 				"My understanding of magic items allows me analyse and understand their secrets. I know the artificer spells detect magic and identify, and I can cast them as rituals."
 			]),
-			spellcastingBonus : { //optional; an object that adds something to the "Bonus Spells" section of the spell selection dialog //this object can have all the same attributes as the "spellcastingList" object, but must also have a "name" defined" //the other things that can be defined in this that are not in the "spellcastingList" object, are the "selection", "times" and "prepared" values	
-				name : "Magic Item Analysis", //required; this is used to identify the object, so must be an unique name				
-				spells : ["detect magic", "identify"], //optional, but required if not including the "class" entry; see "spellcastingList" object				
+			spellcastingBonus : { //optional; an object that adds something to the "Bonus Spells" section of the spell selection dialog //this object can have all the same attributes as the "spellcastingList" object, but must also have a "name" defined" //the other things that can be defined in this that are not in the "spellcastingList" object, are the "selection", "times" and "prepared" values
+				name : "Magic Item Analysis", //required; this is used to identify the object, so must be an unique name
+				spells : ["detect magic", "identify"], //optional, but required if not including the "class" entry; see "spellcastingList" object
 				selection : ["detect magic", "identify"], //optional if "spells" is defined; this is the default selection for the array specified in "spells"
 				times : 2
 			}
@@ -107,19 +107,9 @@ ClassList["artificer"] = {
 			])
 		},
 		"specialisation upgrade" : {
-				name : "Specialisation Upgrade",
-				minlevel : 3,
-				description : "\n   " + "Use the \"Choose Features\" button above to add Specialisation Upgrade to the third page",
-				additional : ["", "", "1 upgrade", "1 upgrade", "2 upgrades", "2 upgrades", "3 upgrades", "3 upgrades", "4 upgrades", "4 upgrades", "5 upgrades", "5 upgrades", "6 upgrades", "6 upgrades", "7 upgrades", "7 upgrades", "8 upgrades", "8 upgrades", "9 upgrades", "9 upgrades"],
-				extraname : "Specialisation Upgrade",
-				extrachoices: ["Belt of Adjusting Size"],
-				"belt of adjusting size" : {
-					name : "Belt of Adjusting Size",
-					description : desc([
-						"You create a belt with a creature size dial on it. While you are wearing this belt, you can use an action to cast Enlarge/Reduce on yourself. Once you use this gadget, you cannot use it again until you complete a short or long rest."
-					]),
-					prereqeval : "(/\\bgadgetsmith\\b/).test(classes.known['artificer'].subclass)"
-				},
+			name : "Specialisation Upgrade",
+			minlevel : 3,
+			description : "\n   " + "Use the \"Choose Features\" button above to add Specialisation Upgrade to the third page"
 		},
 		"tool expertise" : {
 			name : "Tool Expertise",
@@ -134,11 +124,12 @@ ClassList["artificer"] = {
 			description : desc([
 				"I have mastered the knowledge of using magic to repair things. I learn the Mending cantrip, and can cast it at will. Additionally, I learn the Cure Wounds spell. If I already know Cure Wounds I can select another spell from the Artificer list. When I cast Cure Wounds, it can heal constructs in addition to normally valid targets. Both Mending and Cure Wounds learned through this features are considered Artificer spells for me."
 			]),
-			spellcastingBonus : {  
+			spellcastingBonus : {
 				name : "Arcane Reconstruction",
 				spells : ["Mending", "Cure Wounds"],
 				selection : ["Mending", "Cure Wounds"],
-				times : 2
+				times : 2,
+				atwil: true
 			}
 		},
 		"superior attunement" : {
@@ -162,7 +153,7 @@ ClassList["artificer"] = {
 				"My experience in creating my own wondrous invention makes me more adept at crafting a magic item than a normal spellcaster. Creating a magic item takes me half the time it would normally take.",
 				"Additionally, me can make 1 hour of progress toward crafting a magic item, scroll, or potion during a long rest."
 			])
-		},		
+		},
 		"wondrous item recharge" : {
 			name : "Wondrous Item Recharge",
 			minlevel : 10,
@@ -176,7 +167,7 @@ ClassList["artificer"] = {
 			description : desc([
 				"My proficiency in the workings of magic has become so great I can cast detect magic and identify at will. Additionally, I have advantage on all Intelligence (Arcana) checks to understand the workings of magical traps, effects, or runes."
 			])
-		},		
+		},
 		"wondrous item mastery" : {
 			name : "Wondrous Item Mastery",
 			minlevel : 18,
@@ -205,7 +196,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 	regExpSearch : /gadgetsmith/i,
 	subname : "Gadgetsmith",
 	features : {
-		"subclassfeature2" : {
+		"gadgetsmith_proficiency" : {
 			name : "Gadgetsmith's Proficiency",
 			minlevel : 1,
 			description : desc([
@@ -213,7 +204,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 			]),
 			toolProfs : [["Net", "Dex"],["Rapier", "Dex"], ["Whip", "Dex"], ["Tinker's Tools", "Dex"]]
 		},
-		"subclassfeature3" : {
+		"essential_tools" : {
 			name : "Essential Tools",
 			minlevel : 1,
 			description : desc([
@@ -221,20 +212,18 @@ ClassSubList["artificer-gadgetsmith"] = {
 				"Grappling Hook: As an attack or as an action, you may target a surface, object or creature within 20 feet. If the target is Small or Smaller, you can make a Grapple check to pull it to you and Grapple it. Alternatively, if the target is Medium or larger, you can choose to be pulled to it, this does not grapple it.",
 				"Smoke Bomb: As an action, you can use this to instantly cast Fog Cloud on yourself without expending a spell slot. It lasts rounds equal to your intelligence modifier and does not require concentration.",
 				"Shock Generator: As an action, you can use this to cast Shocking Grasp."
-			])//,
-			//eval : "AddAction('action', 'Grappling Hook', 'Target a surface, object or creature within 20 feet. If the target is Small or Smaller, you can make a Grapple check to pull it to you and Grapple it. Alternatively, if the target is Medium or larger, you can choose to be pulled to it, this does not grapple it.'); AddAction('action', 'Smoke Bomb', 'As an action, you can use this to instantly cast Fog Cloud on yourself without expending a spell slot. It lasts rounds equal to your intelligence modifier and does not require concentration.'); AddAction('action', 'Shock Generator', 'As an action, you can use this to cast Shocking Grasp: Make a melee spell Attack against the target. You have advantage on the Attack roll if the target is wearing armor made of metal. On a hit, the target takes 1d8 lightning damage, and it can't take reactions until the start of its next turn.')",
-			//removeeval : "RemoveAction('action', 'Grappling Hook', 'Target a surface, object or creature within 20 feet. If the target is Small or Smaller, you can make a Grapple check to pull it to you and Grapple it. Alternatively, if the target is Medium or larger, you can choose to be pulled to it, this does not grapple it.'); RemoveAction('action', 'Smoke Bomb', 'As an action, you can use this to instantly cast Fog Cloud on yourself without expending a spell slot. It lasts rounds equal to your intelligence modifier and does not require concentration.'); RemoveAction('action', 'Shock Generator', 'As an action, you can use this to cast Shocking Grasp: Make a melee spell Attack against the target. You have advantage on the Attack roll if the target is wearing armor made of metal. On a hit, the target takes 1d8 lightning damage, and it can't take reactions until the start of its next turn.')",
+			])
 		},
-		"subclassfeature4" : {
+		"additional_upgrade" : {
 			name : "Additional Upgrade",
 			minlevel : 3,
 			description : desc([
 				"The number of upgrades I have for my class level is increased by one.",
 				"The number of additional upgrades you get increases to two more than the class table at 5th level."
 			]),
-			additional : ['', '', '2 upgrades', '2 upgrades', '4 upgrades', '4 upgrades', '5 upgrades', '5 upgrades', '6 upgrades', '6 upgrades', '7 upgrades', '7 upgrades', '8 upgrades', '8 upgrades', '9 upgrades', '9 upgrades', '10 upgrades', '10 upgrades', '11 upgrades', '11 upgrades'],
+			additional : ["", "", "1 upgrade", "1 upgrade", "2 upgrades", "2 upgrades", "3 upgrades", "3 upgrades", "4 upgrades", "4 upgrades", "5 upgrades", "5 upgrades", "6 upgrades", "6 upgrades", "7 upgrades", "7 upgrades", "8 upgrades", "8 upgrades", "9 upgrades", "9 upgrades"],
 			extraname : "Gadget Upgrades",
-			extrachoices: ["Antimagical Shackle (prereq: level 5 Artificer)", "Belt of Adjusting Size", "Binding Rope (prereq: level 5 Artificer)", "Bracers of Empowerment (prereq: level 11 Artificer)", "Deployable Wings (prereq: level 9 Artificer)", "Disintegration Ray (prereq: level 15 Artificer)", "Gripping Gloves (prereq: level 11 Artificer)", "Element Eater", "Enhanced Grappling Hook", "Fire Spitter", "Flashbang", "Impact Gauntlet", "Lightning Baton", "Mechanical Arm", "Mechanical Familiar", "Nimble Gloves (prereq: level 11 Artificer)", "Phase Trinket (prereq: level 9 Artificer)", "Jumping Boots", "Repeating Hand Crossbow", "Bee Swarm Rockets (prereq: level 15 Artificer)", "Shocking Hook", "Sight Lenses", "Smoke Cloak", "Stinking Gas (prereq: level 9 Artificer)", "Striding Boots", "Stopwatch Trinket (prereq: level 9 Artificer)", "Truesight Lenses (prereq: Sight Lensens)", "Useful Universal Key", "Zombie Wires (prereq: level 15 Artificer)"],
+			extrachoices: ["Antimagical Shackle (prereq: level 5 Artificer)", "Belt of Adjusting Size", "Binding Rope (prereq: level 5 Artificer)", "Bracers of Empowerment (prereq: level 11 Artificer)", "Deployable Wings (prereq: level 9 Artificer)", "Disintegration Ray (prereq: level 15 Artificer)", "Gripping Gloves (prereq: level 11 Artificer)", "Element Eater", "Enhanced Grappling Hook", "Fire Spitter", "Flashbang", "Impact Gauntlet", "Lightning Baton", "Mechanical Arm", "Mechanical Familiar", "Nimble Gloves (prereq: level 11 Artificer)", "Phase Trinket (prereq: level 9 Artificer)", "Jumping Boots", "Repeating Hand Crossbow", "Bee Swarm Rockets (prereq: level 15 Artificer)", "Shocking Hook", "Sight Lenses", "Smoke Cloak", "Stinking Gas (prereq: level 9 Artificer)", "Striding Boots", "Stopwatch Trinket (prereq: level 9 Artificer)", "Truesight Lenses (prereq: Sight Lensens)", "Useful Universal Key (prereq: level 11 Artificer)", "Zombie Wires (prereq: level 15 Artificer)"],
 			"antimagical shackle (prereq: level 5 artificer)" : {
 				name : "Antimagical Shackle",
 				description : desc([
@@ -242,7 +231,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 					"Additionally, while shackled by these shackles, they cannot teleport, planeshift, polymorph, shapechange, dematerialize, or turn into an amorphous form. As an action they can make a Strength saving throw against your spell save DC to break the shackles once shackled, otherwise these shackles last until you remove them.",
 					"This shackles have no effect on creatures immune to being grappled or restrained."
 				]),
-				prereqeval : "classes.known.artificer.level >= 5)"
+				prereqeval : "classes.known.artificer.level >= 5"
 			},
 			"belt of adjusting size" : {
 				name : "Belt of Adjusting Size",
@@ -256,7 +245,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 				description : desc([
 					"You create a rope that is capable of animating and binding a target. As an action, target a creature within 30 feet. The target must make a Dexterity Saving throw against your Spell Save or become restrained until the end of your next turn. If you are currently grappling the target, it makes the Dexterity saving throw with disadvantage. The rope can only restrain one target a time."
 				]),
-				prereqeval : "classes.known.artificer.level >= 5)"
+				prereqeval : "classes.known.artificer.level >= 5"
 			},
 			"bracers of empowerment (prereq: level 11 artificer)" : {
 				name : "",
@@ -264,14 +253,14 @@ ClassSubList["artificer-gadgetsmith"] = {
 					"You create bracers that can empower you. You can use this to cast Tensor's Transformation without expending a Spell Slot.",
 					"Once you use this ability, you cannot use it again until you complete a long rest."
 				]),
-				prereqeval : "classes.known.artificer.level >= 11)"
+				prereqeval : "classes.known.artificer.level >= 11"
 			},
 			"deployable wings (prereq: level 9 artificer)" : {
 				name : "Deployable Wings",
 				description : desc([
 					"You build a set of deployable artificial wings. You can deploy this as a bonus action, or as a reaction to falling. When deployed, these give you a flying speed of 30 feet."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9)"
+				prereqeval : "classes.known.artificer.level >= 9"
 			},
 			"disintegration ray (prereq: level 15 artificer)" : {
 				name : "Disintegration Ray",
@@ -279,14 +268,14 @@ ClassSubList["artificer-gadgetsmith"] = {
 					"You create a Disintegration Ray. You can use this to cast Disintegration without expending a Spell Slot.",
 					"Once you use this ability, you cannot use it again until you complete a long rest."
 				]),
-				prereqeval : "classes.known.artificer.level >= 15)"
+				prereqeval : "classes.known.artificer.level >= 15"
 			},
 			"gripping gloves (prereq: level 11 artificer)" : {
 				name : "Gripping Gloves",
 				description : desc([
 					"You create a set of gloves with a powerful assisted grip. Your Strength score and maximum Strength score increases by 2 while wearing these gloves. You gain advantage on Strength (Athletics) checks involving manipulating things with your hands while wearing these gloves."
 				]),
-				prereqeval : "classes.known.artificer.level >= 11)"
+				prereqeval : "classes.known.artificer.level >= 11"
 			},
 			"element eater" : {
 				name : "Element Eater",
@@ -350,7 +339,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 				description : desc([
 					"You create magical gloves the increase your dexterity. Your Dexterity score and maximum Dexterity score increases by 2 while wearing these gloves. You gain advantage on Dexterity (Slight of Hand) checks involving manipulating things with your hands while wearing these gloves."
 				]),
-				prereqeval : "classes.known.artificer.level >= 11)"
+				prereqeval : "classes.known.artificer.level >= 11"
 			},
 			"phase trinket (prereq: level 9 artificer)" : {
 				name : "Phase Trinket",
@@ -358,7 +347,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 					"You create a magical stopwatch that manipulates ethereal magic. As an action, you can cast Blink or Dimension Door using the Stopwatch without expending a Spell Slot.",
 					"Once you use this ability, you cannot use it again until you complete a long rest"
 				]),
-				prereqeval : "classes.known.artificer.level >= 9)"
+				prereqeval : "classes.known.artificer.level >= 9"
 			},
 			"jumping boots" : {
 				name : "Jumping Boots",
@@ -381,7 +370,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 					"You design a type of tiny firecracker like device, that can be released in large number. You have a maximum number of rockets equal to your Artificer level. You can release between one and the number you have remaining as an action. Each rocket targets a point you can see within 40 feet. Creatures within 10 feet of a target point must make a dexterity saving throw. Creatures that fail take 2d6 fire damage, or half as much on a successful one.",
 					"You rebuild your stock to your maximum during a long rest."
 				]),
-				prereqeval : "classes.known.artificer.level >= 15)"
+				prereqeval : "classes.known.artificer.level >= 15"
 			},
 			"shocking hook" : {
 				name : "Shocking Hook",
@@ -409,7 +398,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 				description : desc([
 					"You make a more potent compound for your Smoke Bomb. When use a Smoke Bomb, you can choose to cast Stinking Cloud rather than Fog Cloud, following the same rules."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9)"
+				prereqeval : "classes.known.artificer.level >= 9"
 			},
 			"striding boots" : {
 				name : "Striding Boots",
@@ -424,7 +413,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 					"You create a magical stopwatch that manipulates time magic. As an action, you can cast Haste or Slow using the Stopwatch without expending a Spell Slot.",
 					"Once you use this ability, you cannot use it again until you complete a long rest."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9)"
+				prereqeval : "classes.known.artificer.level >= 9"
 			},
 			"truesight lenses (prereq: sight lensens)" : {
 				name : "Truesight Lenses",
@@ -433,12 +422,12 @@ ClassSubList["artificer-gadgetsmith"] = {
 				]),
 				prereqeval : "classes.known.artificer.level >= 1"
 			},
-			"useful universal key" : {
-				name : "Useful Universal Key",
+			"useful universal key (prereq: level 11 artificer)" : {
+				name : "Useful Universal Key (prereq: level 11 Artificer)",
 				description : desc([
 					".."
 				]),
-				prereqeval : "classes.known.artificer.level >= 11)"
+				prereqeval : "classes.known.artificer.level >= 11"
 			},
 			"zombie wires (prereq: level 15 artificer)" : {
 				name : "Zombie Wires",
@@ -446,17 +435,17 @@ ClassSubList["artificer-gadgetsmith"] = {
 					"You create an advanced system of magical threads that you can shoot out, and use to make nearby corpses dance to your commands. As an action, you can cast Danse Macabre without expended a spell slot.",
 					"Once you use this ability, you cannot use it again until you complete a long rest."
 				]),
-				prereqeval : "classes.known.artificer.level >= 15)"
+				prereqeval : "classes.known.artificer.level >= 15"
 			}
 		},
-		"subclassfeature5" : {
+		"recycle_gadgets" : {
 			name : "Recycle Gadgets",
 			minlevel : 3,
 			description : desc([
 				"During a long rest and taking effect when I complete it, I can disassemble my gadgets and create different ones."
 			])
 		},
-		"subclassfeature6" : {
+		"extra_attack" : {
 			name : "Extra Attack",
 			minlevel : 5,
 			description : desc([
@@ -465,7 +454,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 			eval : "ClassList['artificer'].attacks = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]",
 			removeeval : "ClassList['artificer'].attacks = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]"
 		},
-		"subclassfeature7" : {
+		"combat_gadgets" : {
 			name : "Combat Gadgets",
 			minlevel : 14,
 			description : desc([
@@ -480,7 +469,7 @@ ClassSubList["artificer-potionsmith"] = {
 	regExpSearch : /potionsmith/i,
 	subname : "Potionsmith",
 	features : {
-		
+
 	}
 };
 
@@ -488,7 +477,7 @@ ClassSubList["artificer-runesmith"] = {
 	regExpSearch : /runesmith/i,
 	subname : "Runesmith",
 	features : {
-		
+
 	}
 };;
 
@@ -515,9 +504,9 @@ ClassSubList["artificer-warsmith"] = {
 			]),
 			eval : "AddWeapon('mechplate gauntlet');",
 			removeeval : "RemoveWeapon('mechplate gauntlet');",
-			spellcastingBonus : { //optional; an object that adds something to the "Bonus Spells" section of the spell selection dialog //this object can have all the same attributes as the "spellcastingList" object, but must also have a "name" defined" //the other things that can be defined in this that are not in the "spellcastingList" object, are the "selection", "times" and "prepared" values	
-				name : "mechplate gauntlet grasp", //required; this is used to identify the object, so must be an unique name				
-				spells : ["shocking grasp"], //optional, but required if not including the "class" entry; see "spellcastingList" object				
+			spellcastingBonus : { //optional; an object that adds something to the "Bonus Spells" section of the spell selection dialog //this object can have all the same attributes as the "spellcastingList" object, but must also have a "name" defined" //the other things that can be defined in this that are not in the "spellcastingList" object, are the "selection", "times" and "prepared" values
+				name : "mechplate gauntlet grasp", //required; this is used to identify the object, so must be an unique name
+				spells : ["shocking grasp"], //optional, but required if not including the "class" entry; see "spellcastingList" object
 				selection : ["shocking grasp"], //optional if "spells" is defined; this is the default selection for the array specified in "spells"
 				times : 1
 			}
@@ -532,6 +521,7 @@ ClassSubList["artificer-warsmith"] = {
 			]),
 			eval : "AddArmor('Mechplate');",
 			removeeval : "RemoveArmor('Mechplate');",
+			additional : ["", "", "1 upgrade", "1 upgrade", "2 upgrades", "2 upgrades", "3 upgrades", "3 upgrades", "4 upgrades", "4 upgrades", "5 upgrades", "5 upgrades", "6 upgrades", "6 upgrades", "7 upgrades", "7 upgrades", "8 upgrades", "8 upgrades", "9 upgrades", "9 upgrades"],
 			extraname : "Mechplate Upgrades",
 			extrachoices : ["Accelerated Movement", "Active Camouflage (prereq: level 5 Artificer)", "Adaptable Armor", "Arcane Visor (prereq: level 15 Artificer, Darkvision Visor)", "Armor Class (prereq: level 5 Artificer)", "Cloaking Device (prereq: Active Camoflage)", "Darkvision Visor", "Collapsible (prereq: level 5 Artificer)", "Energy Surge", "Flame Projector (prereq: level 9 Artificer, Incompatible with other projectors.)", "Flash Freeze Capacitor (prereq: level 11 Artificer, Incompatible with other capacitors.)", "Flight (prereq: level 9 Artificer)", "Force Blast", "Grappling Reel", "Integrated Weapon", "Integrated Attack (prereq: level 9 Artificer, Integrated Weapon)", "Lightning Projector (prereq: level 9 Artificer, Incompatible with other projectors.)", "Mechsuit (Incompatible with Expanded and Sealed Suit upgrades.)", "Piloted Golem (prereq: Fully upgraded Powered Limbs. Incompatible with Collapsible.)", "Powered Limbs", "Power Slam Capacitor (prereq: level 11 Artificer, Incompatible with other capacitors.)", "Power Fist", "Reactive Plating (prereq: level 15 Artificer)", "Recall (prereq: level 15 Artificer)", "Resistance", "Relocation Matrix (prereq: level 15 Artificer)", "Sealed Suit (prereq: level 5 Artificer)", "Sentient Armor", "Sun Cannon (prereq: level 15 Artificer)", "Virtual Wizard (prereq: level 15 Artificer, Fully upgraded Sentient Armor)"],
 			"accelerated movement": {
@@ -794,15 +784,16 @@ ClassSubList["artificer-warsmith"] = {
 				prereqeval : "classes.known.artificer.level >= 15"
 			}
 		},
-		"extraattack" : {
+		"extra_attack" : {
 			name : "Extra Attack",
 			minlevel : 5,
 			description : desc([
 				"Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
 				]),
-			attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+			eval : "ClassList['artificer'].attacks = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]",
+			removeeval : "ClassList['artificer'].attacks = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]"
 		},
-		"fullycustomizedgear" : {
+		"fully_customized_gear" : {
 			name : "Fully Customized Gear",
 			minlevel : 14,
 			description : desc([
@@ -817,7 +808,7 @@ ClassSubList["artificer-wandsmith"] = {
 	regExpSearch : /wandsmith/i,
 	subname : "Wandsmith",
 	features : {
-		
+
 	}
 };
 
