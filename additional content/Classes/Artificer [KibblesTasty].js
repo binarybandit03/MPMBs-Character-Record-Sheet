@@ -223,7 +223,7 @@ ClassSubList["artificer-gadgetsmith"] = {
 			]),
 			additional : ["", "", "1 upgrade", "1 upgrade", "2 upgrades", "2 upgrades", "3 upgrades", "3 upgrades", "4 upgrades", "4 upgrades", "5 upgrades", "5 upgrades", "6 upgrades", "6 upgrades", "7 upgrades", "7 upgrades", "8 upgrades", "8 upgrades", "9 upgrades", "9 upgrades"],
 			extraname : "Gadget Upgrades",
-			extrachoices: ["Antimagical Shackle (prereq: level 5 Artificer)", "Belt of Adjusting Size", "Binding Rope (prereq: level 5 Artificer)", "Bracers of Empowerment (prereq: level 11 Artificer)", "Deployable Wings (prereq: level 9 Artificer)", "Disintegration Ray (prereq: level 15 Artificer)", "Gripping Gloves (prereq: level 11 Artificer)", "Element Eater", "Enhanced Grappling Hook", "Fire Spitter", "Flashbang", "Impact Gauntlet", "Lightning Baton", "Mechanical Arm", "Mechanical Familiar", "Nimble Gloves (prereq: level 11 Artificer)", "Phase Trinket (prereq: level 9 Artificer)", "Jumping Boots", "Repeating Hand Crossbow", "Bee Swarm Rockets (prereq: level 15 Artificer)", "Shocking Hook", "Sight Lenses", "Smoke Cloak", "Stinking Gas (prereq: level 9 Artificer)", "Striding Boots", "Stopwatch Trinket (prereq: level 9 Artificer)", "Truesight Lenses (prereq: Sight Lensens)", "Useful Universal Key (prereq: level 11 Artificer)", "Zombie Wires (prereq: level 15 Artificer)"],
+			extrachoices: ["Antimagical Shackle (prereq: level 5 Artificer)", "Boomerang of Hitting", "Belt of Adjusting Size", "Binding Rope (prereq: level 5 Artificer)", "Bracers of Empowerment (prereq: level 11 Artificer)", "Deployable Wings (prereq: level 9 Artificer)", "Disintegration Ray (prereq: level 15 Artificer)", "Gripping Gloves (prereq: level 11 Artificer)", "Element Eater", "Enhanced Grappling Hook", "Fire Spitter", "Flashbang", "Impact Gauntlet", "Lightning Baton", "Mechanical Arm", "Mechanical Familiar", "Nimble Gloves (prereq: level 11 Artificer)", "Phase Trinket (prereq: level 9 Artificer)", "Jumping Boots", "Repeating Hand Crossbow", "Bee Swarm Rockets (prereq: level 15 Artificer)", "Shocking Hook", "Sight Lenses", "Smoke Cloak", "Stinking Gas (prereq: level 9 Artificer)", "Striding Boots", "Stopwatch Trinket (prereq: level 9 Artificer)", "Truesight Lenses (prereq: Sight Lensens)", "Useful Universal Key (prereq: level 11 Artificer)", "Zombie Wires (prereq: level 15 Artificer)"],
 			"antimagical shackle (prereq: level 5 artificer)" : {
 				name : "Antimagical Shackle",
 				description : desc([
@@ -232,6 +232,15 @@ ClassSubList["artificer-gadgetsmith"] = {
 					"This shackles have no effect on creatures immune to being grappled or restrained."
 				]),
 				prereqeval : "classes.known.artificer.level >= 5"
+			},
+			"boomerang of hitting" : {
+				name : "Boomerang of Hitting",
+				description : desc([
+					"You create a magical boomerang. You have proficiency in this weapon, and it has the Finesse, Thrown (30/90), and Special properties, and deals 1d4 damage.",
+					"Special: When this weapon is Thrown, you can make target up three seperate targets within 10 feet of each other, making a seperate attack roll against each target.",
+					"This weapon returns to your hand after you make an attack with it using the Thrown property."
+				]),
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"belt of adjusting size" : {
 				name : "Belt of Adjusting Size",
@@ -582,7 +591,7 @@ ClassSubList["artificer-warsmith"] = {
 					"While wearing your Mechplate, you have darkvision to a range of 60 feet.",
 					"If you already have darkvision, this upgrade increases its range by 60 feet."
 				]),
-				prereqeval : "classes.known.artificer.level >= 5"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"collapsible (prereq: level 5 artificer)": {
 				name : "Collapsible",
@@ -598,7 +607,7 @@ ClassSubList["artificer-warsmith"] = {
 					"You upgrade your Mechplate gauntlet to support delievering a energy surge.",
 					"You can use a bonus action to overcharge your gauntlet, and the next Shocking Grasp or Force Blast you hit an enemy with during that turn deals an additional 1d8 lightning damage and knocks a Large or smaller target 10 feet directly away from you."
 				]),
-				prereqeval : "classes.known.artificer.level >= 5"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"flame projector (prereq: level 9 artificer, incompatible with other projectors.)": {
 				name : "Flame Projector",
@@ -633,7 +642,7 @@ ClassSubList["artificer-warsmith"] = {
 					"The weapon fires blasts of arcane energy which deal 1d8 + your Intelligence modifier Force damage. The range is 30 feet.",
 					"You are proficient in this weapon. When you take the attack action, you can use this ranged spell attack in place of any attack made."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"grappling reel": {
 				name : "Grappling Reel",
@@ -642,7 +651,7 @@ ClassSubList["artificer-warsmith"] = {
 					"As 1 attack or 1 action, you may target a surface, object or creature within 40 feet. If the target is Large or Smaller, you can make a Grapple check to pull it to you and Grapple it.",
 					"Alternatively, if the target is Large or larger, you can choose to be pulled to it, this does not grapple it."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"integrated weapon": {
 				name : "Integrated Weapon",
@@ -652,7 +661,7 @@ ClassSubList["artificer-warsmith"] = {
 					"The weapon cannot have the Heavy property. You are proficient with this weapon. As a bonus action you can activate the weapon.",
 					"You can apply this upgrade multiple times, selecting a new weapon and new location on your armor to install it."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"integrated attack (prereq: level 9 artificer, integrated weapon)": {
 				name : "Integrated Attack",
@@ -677,7 +686,7 @@ ClassSubList["artificer-warsmith"] = {
 					"You rebuild your Mechplate to remove the heavy plating.",
 					"You can retain all benefits and upgrades of the Mechplate, but now serves only as Medium armor, providing a base of 15 AC, and its weight is reduced to 40 lbs."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"piloted golem (prereq: fully upgraded powered limbs. incompatible with collapsible.)": {
 				name : "Piloted Golem",
@@ -685,7 +694,7 @@ ClassSubList["artificer-warsmith"] = {
 					"You enlarge your Mechplate, turning it into a piloted mechanical golem.",
 					"Your size category when wearing the armor increases by one, and you have advantage on Strength checks and Strength saving throws."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"powered limbs": {
 				name : "Powered Limbs",
@@ -693,7 +702,7 @@ ClassSubList["artificer-warsmith"] = {
 					"You upgrade frame and limbs of your armor. The bonus your Mechplate grants to your Strength score and maximum Strength score increases by 1 while wearing this armor.",
 					"You can apply this upgrade up to 3 times."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"power slam capacitor (prereq: level 11 artificer, incompatible with other capacitors.)": {
 				name : "Power Slam Capacitor",
@@ -711,7 +720,7 @@ ClassSubList["artificer-warsmith"] = {
 					"Your Mechplate gauntlet's unarmed strike is upgraded to deal 1d8 bludgeoning damage and gains the Special properity.",
 					"Special: When you make an attack roll, you can choose to forgo adding your Proficiency modifier to the attack roll. If the attack hits, you can add double your Proficiency modifier to the damage roll."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"reactive plating (prereq: level 15 artificer)": {
 				name : "Reactive Plating",
@@ -737,7 +746,7 @@ ClassSubList["artificer-warsmith"] = {
 					"Choose acid, cold, fire, force, lightning, necrotic, radiant, or thunder damage. While wearing your Mechplate you have resistance to that type of damage.",
 					"If you apply this upgrade more than once you must choose a different damage type."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"relocation matrix (prereq: level 15 artificer)": {
 				name : "Relocation Matrix",
@@ -764,7 +773,7 @@ ClassSubList["artificer-warsmith"] = {
 					"The bonus your Mechplate grants to your Intelligence score and maximum Intelligence score increases by 1 while wearing this armor. You can apply this upgrade up to 2 times.",
 					"Additionally, when this is fully upgraded, you cannot be surprised while wearing your Mechplate."
 				]),
-				prereqeval : "classes.known.artificer.level >= 9"
+				prereqeval : "classes.known.artificer.level >= 1"
 			},
 			"sun cannon (prereq: level 15 artificer)": {
 				name : "Sun Cannon",
