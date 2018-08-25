@@ -1031,10 +1031,257 @@ ClassSubList["artificer-infusionsmith"] = {
   regExpSearch : /infusionsmith/i,
   subname : "Infusionsmith",
   features : {
+    "infusionsmith_proficiency" : {
+      name : "Infusionsmith's Proficiency",
+      minlevel : 1,
+      description : desc([
+        "When you choose this specialization at 1st level, you gain proficiency with jeweler's tools and calligrapher's supplies.",
+        "Your knowledge of infusion magic gives you a natural affinity for scribing spell scrolls. Creating a magic spell scroll only takes you half the time and material cost it would normally take."
+      ]),
+      toolProfs : [["Jewelers's Tools", "Dex"], ["Calligrapher's Supplies", "Dex"]]
+    },
+    "infused_weapon" : {
+      name : "Infused Weapon",
+      minlevel : 1,
+      description : desc([
+        "Starting at 1st level, you can infuse your weapon with a powerful magic. As a bonus action, you can infuse a weapon you are holding, causing it to burst into ethereal flames.",
+        "The first time you hit an attack with that weapon before the end of your next turn, it deals an additional 1d6 force damage, and the infusion ends.",
+        "This damage increases by 1d6 at 5th level Artificer (2d6), and again at 11th level (3d6) and 17th level (4d6).",
+        "When attacking with an infused weapon, you can use you Intelligence modifier in place of your strength or dexterity modifier for the attack and damage rolls."
+      ])
+    },
+    "store_magic" : {
+      name : "Store Magic",
+      minlevel : 3,
+      description : desc([
+        "Starting at 3rd level, you gain the ability to channel your artificer spells into a non-magical item for later use.",
+        "At the end of a short or long rest, pick a spell you know. You can infuse this spell into an item for later use. You must expend any components the spell requires, but this does not expend a spell slot. Subsequently, any creature holding the item with an Intelligence of 6 or higher that is aware there is magic infused in it can expend the stored magic and cast the spell.",
+        "The spell uses your spellcasting modifiers, but is in all other ways treated as if the creature holding it cast the spell. The magic infused in the item fades if you complete a short or long rest without expending the stored spell."
+      ]),
+      additional : [
+        "",
+        "",
+        "2 upgrades",
+        "2 upgrades",
+        "3 upgrades",
+        "3 upgrades",
+        "4 upgrades",
+        "4 upgrades",
+        "5 upgrades",
+        "5 upgrades",
+        "6 upgrades",
+        "6 upgrades",
+        "7 upgrades",
+        "7 upgrades",
+        "8 upgrades",
+        "8 upgrades",
+        "9 upgrades",
+        "9 upgrades",
+        "10 upgrades",
+        "10 upgrades"
+      ],
+      extraname : "Infusion Upgrades",
+      extrachoices : [
 
+      ],
+      "alter time infusion (prereq: level 9 artificer)" : {
+        name : "Alter Time Infusion",
+        description : desc([
+          "You learn a special infusion for manipulating the flow of time.",
+          "When you use your Store Magic feature, rather than picking a spell you know, you can cast haste or slow. Unless you know these spells from another source, you can only cast these spells using the Store Magic feature."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 9"
+      },
+      "animated archer (prereq: level 5 artificer)" : {
+        name : "Animater Archer",
+        description : desc([
+          "You learn a more complicated version of the Animated Weapon ability, allowing to animate ranged weapons and a quiver of ammunition. The weapon works in the same manner, thought it can target anything within the animated weapons range, and can make a ranged weapon attack when make an attack.",
+          "The weapon still requires ammunition, and can carry up 30 pieces of ammunition at a time, after which it needs to be reloaded as an action."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 5"
+      },
+      "arcane armament" : {
+        name : "Arcane Armament",
+        description : desc([
+          "You learn mastery of armoring yourself with magical enchantments. You learn the mage armor spell and cast it at will. While under the effect of mage armor, you can add your Intelligence to your armor class instead of your dexterity."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "dancing fires (prereq: level 9 artificer)" : {
+        name : "Dancing Fires",
+        description : desc([
+          "When you animate a weapon with your Animated Weapon feature, you can additionally imbue it with ethereal flames, causing it to deal 1d6 force damage on hit."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 9"
+      },
+      "detonate armament (prereq: level 9 artificer)" : {
+        name : "Expanded",
+        description : desc([
+          "As a reaction to taking damage, you can end the effect of mage armor to cast thunder step without expending a spell slot.",
+          "Once you do this, you cannot gain the effect of mage armor again until you complete a short or long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 9"
+      },
+      "enhance attribute" : {
+        name : "Enhance Attribute",
+        description : desc([
+          "You can enhance a piece of non-magical jewelery with power that boots the wearers abilities. Select an attribute from Strength, Dexterity, Constitution, Wisdom, Intelligence or Charisma, the current and maximum attribute score for that attribute is increased by one while wearing this item.",
+          "This piece of jewelry provides a benefit only to you. You can take this upgrade twice."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "enhanced weapon enchantment" : {
+        name : "Enhanced Weapon Enchantment",
+        description : desc([
+          "You modify the Magical Weapon and Elemental Weapon spells into a more potent form.",
+          "When you cast the Magical Weapon spell you can augment it with vorpal power; this spell has the effect of the Magical Weapon spell, but in addition attacks made with the weapon score a critical hit on 19 or a 20 die roll, and the weapon deals force damage.",
+          "When you cast Elemental Weapon, the additional damage dealt on hit is increased by an additional 1d4, and you can pick force as the damage type in addition to the other options."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 5"
+      },
+      "explosive mine (prereq: level 11 artificer)" : {
+        name : "Explosive Mine",
+        description : desc([
+          "When you set a magical trap, you can make the mine cast fireball instead of shatter."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 11"
+      },
+      "focused power duration (prereq: level 15 artificer)" : {
+        name : "Focused Power Duration",
+        description : desc([
+          "When you use your Infused Focus power, the spell lasts a number of rounds equal to your Intelligence modifier + proficiency modifier."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 15"
+      },
+      "healing infusion" : {
+        name : "Healing Infusion",
+        description : desc([
+          "You master the intricate arts of healing energies interaction with creatures. When you restore health to another creature on your turn, you can add your Intelligence modifier to the health restored."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "life infustion (prereq: level 11 artificer)" : {
+        name : "Life Infusion",
+        description : desc([
+          "You learn a potent magical infusion that suffuses a creature with life energy. You can cast regenerate without expending a spell slot.",
+          "Once you cast this spell in this manner, you cannot use it again until you complete a long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 11"
+      },
+      "radiant infusion (prereq: level 15 artificer)" : {
+        name : "Radiant Infusion",
+        description : desc([
+          "You learn a special infusion for bestowing radiant energy. When you use your Store Magic feature, rather than picking a spell you know, you can cast holy weapon. Unless you know this spell from another source, you can only cast this spell using the Store Magic feature.",
+          "If you have the Weapon Enchantment Expertise upgrade, you have advantage on Constitution saving throws to maintain concentration on this spell."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 15"
+      },
+      "shielding ring" : {
+        name : "Shielding Ring",
+        description : desc([
+          "You infuse powerful magic into a non-magical ring. You can use this ring to cast the shield spell without expending a spell slot. You cannot use this ring to cast the spell again until you complete a short or long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "skill infusion" : {
+        name : "Skill Infusion",
+        description : desc([
+          "You managed to make the magic of your Infused Weapon so potent that attacks made with it are made as if the wielder had a Fighting Style. Choose a Fighting Style from Dueling, Archery, or Great Weapon Master and apply the effects to attacks made with your Infused and Animated Weapons."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "spell trapping ring (prereq: level 9 artificer)" : {
+        name : "Spell Trapping Ring",
+        description : desc([
+          "You set a powerful magic into a non-magical ring. You can use this ring to cast Counterspell without expending a spell slot. When you cast Counterspell in this way and it succeeds, the spell countered is stored in the ring. You can then cast the stored spell without expending a spell slot, but spell fades if it is not used before you complete a long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 9"
+      },
+      "sould saving bond" : {
+        name : "Sould Saving Bond",
+        description : desc([
+          "You set up a special magical bond between you and another creature. When either creature bound by this abilities fails Wisdom, Intelligence, Charisma, or Death saving throw, the other character can make their own saving throw, replacing the failed saved with their own roll. If this ability is used on a death saving throw, the replacement roll is a 20.",
+          "Once a roll is replaced by this feature, it cannot be used again until both creatures in the bond have completed a short or long rest.",
+          "This bond can be set up with a different creature at the end of a long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "thunder mine (prereq: level 5 artificer)" : {
+        name : "Thunder Mine",
+        description : desc([
+          "You can set a magical trap by infusing explosive magic into an item. You can set this item to detonate when someone comes within 5 feet of it, or by a verbal command.",
+          "When the magic trap detonates, it casts shatter centered on the item. If a creature is in the area of effect of more than one thunder mine during a turn, they take half damage from any subsequent effects of the mines.",
+          "Setting the magical mine takes a special ritual taking 1 minute, and cannot be moved once placed; any attempt to move it results it in detonating unless the Artificer setting it disarms it.",
+          "You can set a number of these equal to your Intelligence modifier. The number you can place is refreshed when you complete a long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 5"
+      },
+      "triggered infusion" : {
+        name : "Triggered Infusion",
+        description : desc([
+          "When you use your Store Magic feature, you can set a trigger for the effect to occur. If the triggering event occurs, you can use your reaction to activate the stored spell. The trigger event can be a verbal key."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "twin animated weapon (prereq: level 15 artificer)" : {
+        name : "Twin Animated Weapon",
+        description : desc([
+          "When you use your Animate Weapon feature, you can target two weapons. They both function as an Animated Weapon, making attacks against targets you attack as per the feature."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 15"
+      },
+      "warding stone" : {
+        name : "Warding Stone",
+        description : desc([
+          "You learn how to weave a protective enchantment on an item. That item gains a pool of temporary hit points equal to your Artificer level. Whoever is carrying this item gains any temporary hit points remaining in this pool, but these are lost when that creature is no longer carrying this item.",
+          "This pool of temporary hit points refreshes when the Artificer that created it completes a long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "weapon enchantment expertise (prereq: level 5 artificer)" : {
+        name : "Weapon Enchantment Expertise",
+        description : desc([
+          "You refine techniques of magical enhancements for weapons to be easier to use and maintain. You learn the spell magical weapon, and at 9th level you learn the spell elemental weapon. These do not count against your known spells, and if you already know them you may select a different Artificer spell to learn.",
+          "When you cast magical weapon or elemental weapon, you can target a weapon that is already magical, adding to any effect the weapon already has. Additionally, when you have to make a Constitution saving throw to maintain concentration, you do so with advantage."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 5"
+      },
+      "worn enchantment" : {
+        name : "Worn Enchantment",
+        description : desc([
+          "You can enchant an item you a wearing, such as as scarf or cloak to animate and assist you with a task, be it climbing a wall, grappling an enemy, or picking a lock. You can expend a 1st level spell slot to gain proficiency in a Strength or Dexterity skill until you complete a long rest.",
+          "You can use up all the magic in the item to gain advantage on one check of that skill, immediately ending the effect."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "flying boots (prereq: level 15 artificer)" :{
+        name : "Flying Boots",
+        description : desc([
+          "You cast a powerful infusion on a set of boots. The creature wearing these boots is under the effect of the fly spell."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 15"
+      }
+    },
+    "animated_weapon" : {
+      name : "Animated Weapon",
+      minlevel : 5,
+      description : desc([
+        "Starting at 5th level, you can animate a weapon to strike your enemies. At the end of a long rest, you can touch a melee weapon in your possession and infuse it with animating magic. You do not need to have proficiency with this weapon. During this time, when you take the attack action, you can mentally direct the animated weapon to attack a creature within within 30 feet of you; this can be in addition to making an attack with a carried weapon as normal.",
+        "Additionally, whenever you cast magical weapon, elemental weapon, or holy weapon, your animated weapon also gains the benefits of the spell as long as you are concentrating on it.",
+        "The weapon returns to your side after every attack. If there is no path between you and the target of your attack, the attack fails, but the animated weapon otherwise ignores cover.",
+        "When attacking with an animated weapon, it is treated as if you had proficiency in the weapon (whether you do or not) and you can use you Intelligence modifier in place of your Strength or Dexterity modifier for the attack and damage rolls."
+      ])
+    },
+    "infused_focus" : {
+      name : "Infused Focus",
+      minlevel : 14,
+      description : desc([
+        "Starting at 14th level, you can anchor a powerful spell into an item. When you cast a concentration spell, you can anchor it to an item, and do not need to maintain concentration. The spell lasts a number of rounds equal to your intelligence modifier, after which the spell ends.",
+        "Once you use this ability, you must complete a short or long rest before using it again."
+      ])
+    }
   }
 };
-
 
 ClassSubList["artificer-warsmith"] = {
   regExpSearch : /warsmith/i,
