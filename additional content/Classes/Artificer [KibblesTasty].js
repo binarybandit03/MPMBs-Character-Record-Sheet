@@ -1661,7 +1661,7 @@ ArmourList["mechplate"] = {
   ac : 18,
   stealthdis : true,
   weight : 105,
-  description : "While wearing your Mechplate your Strength score increases by 1, and your maximum Strength score increase by the same amount. Additionally, you count as one size larger when determining the weight you can push, drag, or lift. A small creature wearing mechplate becomes a medium sized creature while wearing the mechplate."
+  description : "While wearing your Mechplate your Strength score increases by 2, and your maximum Strength score increase by the same amount. Additionally, you count as one size larger when determining the weight you can push, drag, or lift. A small creature wearing mechplate becomes a medium sized creature while wearing the mechplate."
 };
 
 // Wandsmith
