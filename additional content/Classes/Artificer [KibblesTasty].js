@@ -438,7 +438,7 @@ ClassSubList["artificer-gadgetsmith"] = {
       name : "Gadgetsmith's Proficiency",
       minlevel : 1,
       description : desc([
-        "I gain proficiency with nets, rapiers, whips, and tinker's tools."
+        "When you choose this specialization at 1st level, you gain proficiency with nets, rapiers, whips, and tinker's tools."
       ]),
       toolProfs : [["Tinker's Tools", "Dex"]],
       weapons : [[true, false, ["Net", "Rapier", "Whip"]]]
@@ -687,7 +687,8 @@ ClassSubList["artificer-gadgetsmith"] = {
         description : desc([
           "You create a device capable of generating potent shocks. You can use this to cast Shocking Grasp.",
           "When you cast Shocking Grasp with this feature, you can use either your Dexterity or Intelligence modifier for the melee spell attack roll."
-        ])
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
       },
       "shocking hook" : {
         name : "Shocking Hook",
@@ -788,7 +789,241 @@ ClassSubList["artificer-golemsmith"] = {
   regExpSearch : /golemsmith/i,
   subname : "Golemsmith",
   features : {
+    "golemsmith_proficiency" : {
+      name : "Golemsmith's Proficiency",
+      minlevel : 1,
+      description : desc([
+        "When you choose this specialization at 1st level, you gain proficiency with smith's tools and tinker's tools."
+      ]),
+      toolProfs : [["Smith's Tools", "Dex"], ["Tinker's Tools", "Dex"]]
+    },
+    "warforged_golem" : {
+      name : "Warforged Golem",
+      minlevel : 1,
+      description : desc([
+        "Starting at 1st level, you have forged a mechanical golem to carry out your orders and protect you.",
+        "The golem is controlled via a pendent that only you can attune to."
+      ])
+    },
+    "intelligent_oversight" : {
+      name : "Intelligent Oversight",
+      minlevel : 3,
+      description : desc([
+        "Starting at 3rd level, you can use the Help action as a bonus action when assisting your golem.",
+        "Additionally, when you use the Help action to aid an ally in attacking a creature, the target of that attack can be within 30 feet of you, rather than 5 feet of you, if the allied creature can see or hear you."
+      ]),
+      additional : [
+        "",
+        "",
+        "2 upgrades",
+        "2 upgrades",
+        "3 upgrades",
+        "3 upgrades",
+        "4 upgrades",
+        "4 upgrades",
+        "5 upgrades",
+        "5 upgrades",
+        "6 upgrades",
+        "6 upgrades",
+        "7 upgrades",
+        "7 upgrades",
+        "8 upgrades",
+        "8 upgrades",
+        "9 upgrades",
+        "9 upgrades",
+        "10 upgrades",
+        "10 upgrades"
+      ],
+      extraname : "Golem Upgrades",
+      extrachoices : [
 
+      ],
+      "arcane barrage armament (prereq: level 5 artificer)" : {
+        name : "Arcane Barrage Armament",
+        description : desc([
+          "You install a shoulder mounted armament to your golem, charged with arcane power. As an action, the golem can cast Magic Missile as a 3rd level spell. When cast this way, it has no Verbal or Somatic component.",
+          "Once used, this armament cannot be used again until the Artificer completes a short or long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 5"
+      },
+      "arcane resonance" : {
+        name : "Arcane Resonance",
+        description : desc([
+          "Install an essence connection into your golem to sync your magic to it. You can make any spell you cast that targets only you also target your golem."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "cloaking device (prereq: level 15 artificer)" : {
+        name : "Cloaking Device",
+        description : desc([
+          "You install an Arcane Cloaking device on your Warforged Golem. This device has 4 Charges. You can direct the golem to expend 1 or more charges to cast one of the following spells using its action: Invisibility (2 charges), Greater Invisibility (4 charges).",
+          "It regains all charges after a long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 15"
+      },
+      "enviornmental adaptation (prereq: level 5 artificer)" : {
+        name : "Enviornmental Adaptation",
+        description : desc([
+          "You add integrated climbing hooks, deployable fins, insulated seals to your Golem. Your Warforged Golem gains a climbing and swimming speed equal to its walking speed.",
+          "Additionally, it gains resistance to Cold and Fire damage."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 5"
+      },
+      "expanded (prereq: level 9 artificer)" : {
+        name : "Expanded",
+        description : desc([
+          "You enlarge your Warforged Golem, increasing its size category by one. It has advantage on Strength checks and Strength saving throws."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 9"
+      },
+      "flamethrower armament (prereq: level 5 artificer)" : {
+        name : "Flamethrower Armament",
+        description : desc([
+          "You install a shoulder mounted armament to your golem, heavily enchanted with flame spells. As an action, the golem can cast Burning Hands as a 3rd level spell.",
+          "The spell save DC is equal to your spell save DC. When cast this way, it has no Verbal or Somatic component.",
+          "Once used, this armament cannot be used again until the Artificer completes a short or long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 5"
+      },
+      "magical essence" : {
+        name : "Magical Essence",
+        description : desc([
+          "You infuse a fragment of magical essence into your golem, allowing it to attune to one magical item."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "heavy armor plating (prereq: level 5 artificer)" : {
+        name : "Heavy Armor Plating",
+        description : desc([
+          "You can incorporate a suit of Heavy Armor into your Warforged Golem. Your Warforged Golem's AC becomes the AC granted by the incorporated armor. While incorporated with your Warforged Golem in this way, the Warforged Golem has Proficiency with that armor.",
+          "While equipped with Heavy Armor, your Warforged Golem has disadvantage on Dexterity (Stealth) checks."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 5"
+      },
+      "improve dexterity" : {
+        name : "Improve Dexterity",
+        description : desc([
+          "You tune the servos in your Warforged Golem. Your Warforged Golem's Dexterity score increases by 2. You may apply this upgrade multiple times. A Warforged Golem's maximum Dexterity score is 18."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "improve strength" : {
+        name : "Improve Strength",
+        description : desc([
+          "You reinforce the power of your golem’s core and limbs. Your Warforged Golem's Strength score increases by 2. A Warforged Golem's maximum Strength score is 18."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "iron fortress (prereq: stabilization)" : {
+        name : "Iron Fortress",
+        description : desc([
+          "You increase the size and durability of your golem’s frame. Your Warforged Golem now counts as full cover for people behind it or riding it. Additionally, it cannot be moved against its will while in contact with a floor."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "multiattack protocol (prereq: level 11 artificer)" : {
+        name : "Multiattack Protocol",
+        description : desc([
+          "Your Warforged Golem gains multiattack. When your Warforged Golem uses the Attack action, it can attack twice."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 11"
+      },
+      "mark of life (prereq: level 9 artificer)" : {
+        name : "Mark of Life",
+        description : desc([
+          "You have attained the understanding of magic and craft a Mark of Life on the forehead of your Warforged Golem, turning it into a Warforged Companion.",
+          "It gains an Intelligence score of 8, a Wisdom score of 8 and a Charisma score of 8. This allows it to follow more complex commands without direct input, speak, and remember things."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 9"
+      },
+      "overdrive protocol (prereq: level 9 artificer)" : {
+        name : "Overdrive Protocol",
+        description : desc([
+          "You build in a special mode allowing your golem go beyond it's normal limitations. As an action, your golem can activate this mode, gaining the effects of Haste for a number of rounds equal to your intelligence modifier, but loses its immunity to exhaustion until it completes a long rest."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 9"
+      },
+      "precision movements" : {
+        name : "Precision Movements",
+        description : desc([
+          "Your Warforged Golem gains Proficiency in the Stealth skill and with Thieves' Tools. Additionally, it gains an integrated set of Thieves' Tools that are always available."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "thundering stomp (prereq: expanded)" : {
+        name : "Thundering Stomp",
+        description : desc([
+          "Your warforged golem can leverage it's increased size and magical nature to unleash a crushing stomp of magical energy when it brings down its foot. Your golem can replace any attack with the thunderclap spell using the Artificers level and spell save for casting the spell."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 9"
+      },
+      "redundant systems" : {
+        name : "Redundant Systems",
+        description : desc([
+          "You have reinforced your Warforged Golem with layers of protection and redundant systems. It gains additional hitpoints equal to twice your Artificer level. Additionally, it gains advantage on death saving throws."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "remote casting" : {
+        name : "Remote Casting",
+        description : desc([
+          "You integrate a magical relay into your golem, allowing you use it as a magical familiar. As an action, you can see through your golem's eyes and hear what it hears until the start of your next turn. During this time, you are deaf and blind with regard to your own Senses.",
+          "Additionally, when you Cast a Spell with a range of touch, your golem can deliver the spell as if it had cast the spell. Your golem must be within 100 feet of you, and it must use its reaction to deliver the spell when you cast it. If the spell requires an Attack roll, you use your Attack modifier for the roll."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "runic wings (prereq: level 11 artificer)" : {
+        name : "Runic Wings",
+        description : desc([
+          "You add rune-engraved wings to your Warforged Golem, granting it a flying speed of 20 feet."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 11"
+      },
+      "stabilization" : {
+        name : "Stabilization",
+        description : desc([
+          "You increase the resilience and stability of your Warforged Golem. It gains proficiency in Constitution Saving Throws and has advantage against saving throws to be knocked down."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "warfare routines" : {
+        name : "Warfare Routines",
+        description : desc([
+          "Your Warforged Golem gains one Fighting Style of your choice from Archery, Defense, Duelling, or Great Weapon Fighting."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 1"
+      },
+      "warforged apprentice (prereq: level 15 artificer)" : {
+        name : "Warforged Apprentice",
+        description : desc([
+          "Your Warforged Companion begins to apply its abilities to learn new things, gaining a class level in a class of your choosing. Your Warforged Companion gains all the first level features of the chosen class.",
+          "This does not include health or class proficiencies (for example, selecting Fighter grants only Fighting Style and Second Wind)."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 15"
+      },
+      "warforged adept (prereq: warforged apprentice)" :{
+        name : "Warforged Adept",
+        description : desc([
+          "Your growth as a Golemsmith is such that your creation is capable of learning and adapting even more skills. It gains all the second level features of the class you selected for the Warforged Apprentice upgrade. This does not include health or class proficiencies (for example, selecting Fighter grants only Action Surge)."
+        ]),
+        prereqeval : "classes.known.artificer.level >= 15"
+      }
+    },
+    "autonomous_action" : {
+      name : "Autonomous Action",
+      minlevel : 5,
+      description : desc([
+        "Starting at 5th level, you no longer need to spend your action to direct the golem to use its action,",
+        "and it can act following mental commands communicated via the control pendant (no action required by Artificer)."
+      ])
+    },
+    "perfected_design" : {
+      name : "Perfected Design",
+      minlevel : 14,
+      description : desc([
+        "Starting at 14th level, your golem can add your Intelligence modifier to all of its attack rolls, skill checks, and saving throws."
+      ])
+    }
   }
 };;
 
